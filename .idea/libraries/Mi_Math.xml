@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Mi_Math">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Mi_Math/out/artifacts/Mi_Math_jar/Mi_Math.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
