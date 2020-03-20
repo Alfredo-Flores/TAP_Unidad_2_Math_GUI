@@ -55,8 +55,8 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
     JLabel labelVariacionConResultado = new JLabel("Resultado: ");
     JLabel labelVariacionConResultado2 = new JLabel("Resultado: ");
     JLabel labelPermutacionSinResultado = new JLabel("Resultado: ");
-    JLabel labelCombionacionSinResultado = new JLabel("Resultado: ");
     JLabel labelCombionacionConResultado = new JLabel("Resultado: ");
+    JLabel labelCombionacionSinResultado = new JLabel("Resultado: ");
     JLabel labelResultadoHipotenusa = new JLabel("Hipotenusa: ");
     JLabel labelResultadoAngulo1 = new JLabel("Angulo a: ");
     JLabel labelResultadoAngulo2 = new JLabel("Angulo b: ");
@@ -177,7 +177,7 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
     public void setProbabilidadPane() throws IOException, FontFormatException {
         JTitulo labelVariacionCon = new JTitulo("Varciación con repetición: "), labelVariacionSin = new JTitulo("Varciación sin repetición: ");
         JTitulo labelPermutacionSin = new JTitulo("Permutación sin repetición: ");
-        JTitulo labelCombinacionCon = new JTitulo("Combinación con repetición: "), labelCombinacionSin = new JTitulo("Combinación con repetición: ");
+        JTitulo labelCombinacionCon = new JTitulo("Combinación con repetición: "), labelCombinacionSin = new JTitulo("Combinación sin repetición: ");
 
         JLabel labelVariacionConLatex = new JLabel(imageVariacionCon);
         JLabel label_n = new JLabel(image_n);
@@ -248,18 +248,18 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
         c.gridx = 7;    innerpane.add(labelPermutacionSinResultado, c);
         c.gridx = 0;
 
-        c.gridy = 7;    innerpane.add(labelCombinacionSin, c);
-        c.gridy = 8;    innerpane.add(labelCombinacionSinLatex, c);
+        c.gridy = 7;    innerpane.add(labelCombinacionCon, c);
+        c.gridy = 8;    innerpane.add(labelCombinacionConLatex, c);
         c.gridx = 1;    innerpane.add(label_n4, c);    c.gridx = 2; innerpane.add(field_n4, c);
         c.gridx = 3;    innerpane.add(label_m4, c);    c.gridx = 4; innerpane.add(field_m4, c);
-        c.gridx = 7;    innerpane.add(labelCombionacionSinResultado, c);
+        c.gridx = 7;    innerpane.add(labelCombionacionConResultado, c);
         c.gridx = 0;
 
-        c.gridy = 9;    innerpane.add(labelCombinacionCon, c);
-        c.gridy = 10;    innerpane.add(labelCombinacionConLatex, c);
+        c.gridy = 9;    innerpane.add(labelCombinacionSin, c);
+        c.gridy = 10;   innerpane.add(labelCombinacionSinLatex, c);
         c.gridx = 1;    innerpane.add(label_n5, c);    c.gridx = 2; innerpane.add(field_n5, c);
         c.gridx = 3;    innerpane.add(label_m5, c);    c.gridx = 4; innerpane.add(field_m5, c);
-        c.gridx = 7;    innerpane.add(labelCombionacionConResultado, c);
+        c.gridx = 7;    innerpane.add(labelCombionacionSinResultado, c);
         c.gridx = 0;
 
         c = new GridBagConstraints();
@@ -523,14 +523,12 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
         int factorial_numerador = Operadores.factorial(a);
         int factorial_demominador = Operadores.factorial((n-m));
 
-        double res = factorial_numerador / factorial_demominador;
+        double res = (double) factorial_numerador / factorial_demominador;
 
         labelVariacionConResultado2.setText("Resultado: " + res);
     }
 
     private void calcularPermutacionSin(int n) {
-        System.out.println(n);
-
         labelPermutacionSinResultado.setText("Resultado: " + Operadores.factorial(n));
     }
 
@@ -538,7 +536,7 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
         int factorial_numerador = (m + n + 1);
         int factorial_demominador = Operadores.factorial(m) *  Operadores.factorial(n - 1) ;
 
-        double res = factorial_numerador / factorial_demominador;
+        double res = (double) factorial_numerador / factorial_demominador;
 
         labelCombionacionConResultado.setText("Resultado: " + res);
     }
@@ -547,7 +545,7 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
         int factorial_numerador = Operadores.factorial(n);
         int factorial_demominador = Operadores.factorial(m) *  Operadores.factorial(n - m) ;
 
-        double res = factorial_numerador / factorial_demominador;
+        double res = (double) factorial_numerador / factorial_demominador;
 
         labelCombionacionSinResultado.setText("Resultado: " + res);
     }
@@ -569,11 +567,6 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
     }
 
     private void calcularTrianguloEscaleno(int a, int b, int c) {
-
-        System.out.println((Operadores.pow(b, 2) - Operadores.pow(a, 2) - Operadores.pow(c, 2)));
-        System.out.println((-2 * a * c));
-        System.out.println((Operadores.pow(b, 2) - Operadores.pow(a, 2) - Operadores.pow(c, 2))/(-2 * a * c));
-
         double anguloa = Trigonometria.Grados(Trigonometria.acos((double) (Operadores.pow(a, 2) - Operadores.pow(b, 2) - Operadores.pow(c, 2))/(-2 * b * c)));
         double angulob = Trigonometria.Grados(Trigonometria.acos((double) (Operadores.pow(b, 2) - Operadores.pow(a, 2) - Operadores.pow(c, 2))/(-2 * a * c)));
         double anguloc = Trigonometria.Grados(Trigonometria.acos((double) (Operadores.pow(c, 2) - Operadores.pow(b, 2) - Operadores.pow(a, 2))/(-2 * b * a)));
@@ -626,7 +619,6 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
         } if (Objecto == field_n3) {
             String n = field_n3.getText();
 
-            System.out.println( field_n3.getText());
             if (!valirdarInt(n)) {
                 labelPermutacionSinResultado.setText("Resultado: ");
                 return;
@@ -642,7 +634,7 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
                 return;
             }
 
-            calcularCombinacionCon(Integer.parseInt(field_n2.getText()), Integer.parseInt(field_m2.getText()));
+            calcularCombinacionCon(Integer.parseInt(field_n4.getText()), Integer.parseInt(field_m4.getText()));
         } if (Objecto == field_n5 || Objecto == field_m5) {
             String n = field_n5.getText();
             String m = field_m5.getText();
@@ -652,7 +644,7 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
                 return;
             }
 
-            calcularCombinacionSin(Integer.parseInt(field_n2.getText()), Integer.parseInt(field_m2.getText()));
+            calcularCombinacionSin(Integer.parseInt(field_n5.getText()), Integer.parseInt(field_m5.getText()));
         }if (Objecto == field_cateto_adyacente || Objecto == field_cateto_opuesto) {
             String n = field_cateto_adyacente.getText();
             String m = field_cateto_opuesto.getText();
@@ -691,11 +683,8 @@ public class InterfazMain extends JFrame implements ActionListener, KeyListener 
 
             try {
                 long res = Derivatives.derivativeVal(ecuacion, Integer.parseInt(valor));
-                System.out.println(res);
                 labelResultadoDerivada.setText("Resultado: " +  res);
             } catch (Exception e) {
-                System.out.println("wut");
-                e.printStackTrace();
                 labelResultadoDerivada.setText("Resultado: ");
             }
         }
